@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body class="inner-bg">
+    <div class="vh-100 d-flex align-items-center">
+        <div class="content m-auto">
+            <div class="container">
+                <h6 class="text-uppercase fw-bold fs text-center m-0">Vowels and Consonant Checker</h6>
+                <div class="input-group py-4">
+                    <span class="input-group-text">🔤</span>
+                    <input type="text" id="string" class="form-control" placeholder="Enter String">
+                </div>
+                <div class="py-1 pb-4">
+                    <button class="btn btn-primary border-0 w-100" id="submit">Check 🔍</button>
+                </div>
+                <div id="ans">
+                    <div class="pb-4">
+                        <input type="text" id="vowel" class="form-control" placeholder="Vowels Will Appear Here">
+                    </div>
+                    <div class="pb-4">
+                        <input type="text" id="conso" class="form-control" placeholder="Consonants Will Appear Here">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="m-2">
+        <h4>Vowels and Consonant</h4>
+        <label for="string">Enter String :</label>
+        <input type="text" id="string" required>
+        <button class="submit">Submit</button>
+        <div>Ans : <span id="ans"></span></div>
+    </div> -->
+    <script src="./assets/js/jquery-3.7.1.min.js"></script>
+    <script>
+        const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+        function applyGlow(color) {
+            $("#vowel, #conso").removeClass("glow-green glow-yellow glow-red").addClass(color);
+        }
+
+        function checkVowelsConsonants(string) {
+            let inputStr = $("#string").val().trim();
+            if (inputStr === "") {
+                $("#vowel").val("⚠️ Please Enter A Valid Input");
+                $("#conso").val("⚠️ Please Enter A Valid Input");
+                applyGlow("glow-yellow");
+                return;
+            }
+
+            let vowelsCount = 0, consonantsCount = 0;
+
+            for (let letter of inputStr.toLowerCase()) {
+                if (vowels.includes(letter)) {
+                    vowelsCount++;
+                } else if (letter >= 'a' && letter <= 'z') {
+                    consonantsCount++;
+                }
+            }
+
+            $("#vowel").val(`Vowels: ${vowelsCount}`);
+            $("#conso").val(`Consonants: ${consonantsCount}`);
+
+            if (vowelsCount === 0 || consonantsCount === 0) {
+                applyGlow("glow-red");
+            } else {
+                applyGlow("glow-green");
+            }
+        }
+
+        $(document).ready(function () {
+            $("#submit").on("click", function () {
+                checkVowelsConsonants();
+            })
+        })
+    </script>
+</body>
+
+</html>
