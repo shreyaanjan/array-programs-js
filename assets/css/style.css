@@ -1,6 +1,7 @@
 .inner-bg{
     background:  rgba(0, 0, 0, 0.04) url(../images/bg.jpg);
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     position: relative;
     z-index: 1;
@@ -38,8 +39,32 @@
     font-size: 16px;
 }
 
-#submit, #upper, #lower, #toggle{
+#submit, #upper, #lower, #toggle, #cls, #idx{
     background-color: rgb(25,63,116);
+}
+
+#submit:hover{
+    background-color: rgb(2, 85, 202);
+}
+
+#upper:hover{
+    background-color: rgb(2, 85, 202);
+}
+
+#lower:hover{
+    background-color: rgb(2, 85, 202);
+}
+
+#toggle:hover{
+    background-color: rgb(2, 85, 202);
+}
+
+#cls:hover{
+    background-color: rgb(2, 85, 202);
+}
+
+#idx:hover{
+    background-color: rgb(2, 85, 202);
 }
 
 .glow-green {
@@ -88,4 +113,20 @@
 
 .idx-bg ul li a{
     text-decoration: none !important;
+}
+
+.glow-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgb(118, 169, 241);
+    border-radius: 5px;
+    font-size: 16px;
+    background: transparent;
+    outline: none;
+    box-shadow: 0 0 5px rgb(25,63,116);
+    transition: 0.3s;
+}
+
+.glow-input:focus {
+    box-shadow: 0 0 15px rgb(25,63,116), 0 0 30px rgb(25,63,116);
 }
